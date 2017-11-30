@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Login Screen</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/styles1.css">
+</head>
+
+<body>
+
+	<header>
+		<img src="images/logo.png" alt="Logo image">
+		<nav>
+			<ul>
+				<li><a href="index.php">Main</a></li>
+				<li><a href="index.php?module=kliento_prijungimas" <?php if($module == 'kliento_prijungimas') { echo 'class="active"'; }?>>Login Here</a></li>
+				<li><a href="#">Computers shop</a></li>
+				<li><a href="#">Computers maintenance</a></li>
+				<li><a href="#">Computer parts</a></li>
+			</ul>
+		</nav>		
+	</header>
+	
+	<main>
+	
+	<div class="hero-box">
+	<h1> Computer shop </h1>
+	</div>
+	
+	<div id="container_demo" >
+	<!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
+	<a class="hiddenanchor" id="toregister"></a>
+	<a class="hiddenanchor" id="tologin"></a>
+	<div id="wrapper">
+		<br>
+		<div class="login-form">
+		<div id="login" class="animate form" align="center">
+			<form  action="mysuperscript.php" autocomplete="on"> 
+				<h1>Log in</h1> 
+				<p> 
+					<label for="username" class="uname" data-icon="u" > Enter your email or username </label>
+					<input id="username" name="username" required="required" type="text" placeholder="myusername or mymail@mail.com"/>
+				</p>
+				<p> 
+					<label for="password" class="youpasswd" data-icon="p"> Your password </label>
+					<input id="password" name="password" required="required" type="password" placeholder="Enter your password here" /> 
+				</p>
+				<p class="keeplogin"> 
+					<input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
+					<label for="loginkeeping">Keep me logged in</label>
+				</p>
+				<p class="login button"> 
+					<input type="submit" value="Login" onClick="clicked()"/> 
+				</p>
+				<p class="change_link">
+					Not a member yet ?
+					<a href="index.php?module=kliento_registracija" class="to_register">Join us</a>
+				</p>
+			</form>
+		</div>	
+		</div>
+		
+	</div>
+	</div>  
+
+	</main>
+	
+	<footer>
+		<h2>Web Page</h2>
+	</footer>
+
+	<script type="text/JavaScript" src="js/jvscript.js"></script>
+</body>
+</html>

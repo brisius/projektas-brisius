@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Main</title>
+
+		<!-- CSS -->
+		<link rel="stylesheet" href="css/styles1.css">
+	</head>
+
+<body>
+	<header>
+		<img src="images/logo.png" alt="Logo image">
+		<nav>
+			<ul>
+				<li><a href="index.php">Main</a></li>
+				<li><a href="index.php?module=kliento_prijungimas" <?php if($module == 'kliento_prijungimas') { echo 'class="active"'; }?>>Login Here</a></li>
+				<li><a href="#">Computers shop</a></li>
+				<li><a href="#">Computers maintenance</a></li>
+				<li><a href="#">Computer parts</a></li>
+			</ul>
+		</nav>		
+	</header>
+			
+	<main>
+		<div class="hero-box">
+			<h1> Computer shop </h1>
+		</div>
+		<div class="col"><img src="images/im1.png" alt=""></div>
+		<div class="col"><img src="images/im2.png" alt=""></div>
+		<div class="col"><img src="images/im3.png" alt=""></div>
+		<div class="col"><img src="images/image4.jpg" alt=""></div>
+		<div class="col hidden-xs"><img src="images/image5.jpg" alt=""></div>
+		<div class="col hidden-xs"><img src="images/image6.jpg" alt=""></div>
+		
+		<section id="newsletter">
+        	<div class="container">
+        		<h1>Subscribe To Our Newsletter</h1>
+        		<form>
+          			<input type="email" placeholder="Enter Email...">
+          			<button type="submit" class="button_1">Subscribe</button>
+        		</form>
+      		</div>
+    	</section>
+	</main>
+	
+	<div id="browse_app">
+    <button class="btn btn-large btn-info" type="button">Browse</button>
+	</div>
+	
+	
+	
+	<footer>
+		<h2>Web Page</h2>
+	</footer>
+
+
+</body>
+</html>

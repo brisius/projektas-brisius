@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Registration window</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- CSS -->
+	<link rel="stylesheet" href="css/styles1.css">
+	<!-- <link rel="stylesheet" href="styles.css"> -->
+</head>
+
+<body>
+
+
+	<header>
+		<img src="images/logo.png" alt="Logo image">
+		<nav>
+			<ul>
+				<li><a href="index.php">Main</a></li>
+				<li><a href="index.php?module=kliento_prijungimas" <?php if($module == 'kliento_prijungimas') { echo 'class="active"'; }?>>Login Here</a></li>
+				<li><a href="#">Computers shop</a></li>
+				<li><a href="#">Computers maintenance</a></li>
+				<li><a href="#">Computer parts</a></li>
+			</ul>
+		</nav>		
+	</header>
+	
+	<main>
+	
+	<div class="hero-box">
+	<h1> Computer shop </h1>
+	</div>
+	
+	<div id="container_demo" >
+	<!-- hidden anchor to stop jump http://www.css3create.com/Astuce-Empecher-le-scroll-avec-l-utilisation-de-target#wrap4  -->
+	<a class="hiddenanchor" id="toregister"></a>
+	<a class="hiddenanchor" id="tologin"></a>
+	<div id="wrapper">
+		
+	<br>			
+		<div class="registration-form">
+		<div id="register" class="animate form" align="center">
+			<form  action="../lib/kliento_registracija.php" autocomplete="on" method="POST"> 
+				<h1> Sign up </h1>
+				<p> 
+					<label for="namesignup" class="name" data-icon="n">Your name</label>
+					<input id="namesignup" name="namesignup" required="required" type="text" placeholder="name"/>
+				</p>
+				<p> 
+					<label for="surnamesignup" class="surname" data-icon="s">Your surname</label>
+					<input id="surnamesignup" name="surnamesignup" required="required" type="text" placeholder="surname"/>
+				</p>  
+				<p> 
+					<label for="usernamesignup" class="uname" data-icon="u">Your username</label>
+					<input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="mysuperusername690"/>
+				</p>
+				<p> 
+					<label for="emailsignup" class="youmail" data-icon="e" > Your email</label>
+					<input id="emailsignup" name="emailsignup" required="required" type="email" placeholder="mysupermail@mail.com"/> 
+				</p>
+				<p> 
+					<label for="gendersignup" class="gender" data-icon="g" > Your gender</label>
+					<input id="genderMsignup" name="gendersignup" required="required" type="radio" value="male" /> Male
+					<input id="genderFsignup" name="gendersignup" required="required" type="radio" value="female" /> Female
+				</p>
+				<p> 
+					<label for="telephonesignup" class="telephone" data-icon="t" > Your phone</label>
+					<input id="telephonesignup" name="telephonesignup" required="required" type="tel" placeholder="+37060277885"/> 
+				</p>
+				<p> 
+					<label for="addresssignup" class="address" data-icon="a" > Your address</label>
+					<input id="addresssignup" name="addresssignup" required="required" type="text" placeholder="Lithuania Kaunas ..."/> 
+				</p>
+				<p> 
+					<label for="passwordsignup" class="youpasswd" data-icon="p">Your password </label>
+					<input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="eg. X8df!90EO"/>
+				</p>
+				<p> 
+					<label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Please confirm your password </label>
+					<input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="eg. X8df!90EO"/>
+				</p>
+				<p class="signin button"> 
+					<input type="submit" value="Sign up" name="signup" /> 
+				</p>
+				<p class="change_link">  
+					Already a member?
+					<a href="index.php?module=kliento_prijungimas" class="to_register"> Go and log in!</a>
+				</p>
+			</form>
+		</div>
+		</div>
+		
+	</div>
+	</div> 
+
+
+	</main>
+	
+	<footer>
+		<h2>KTU 2017</h2>
+	</footer>
+
+</body>
+</html>
