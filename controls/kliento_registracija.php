@@ -1,5 +1,8 @@
 <?php
-
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+}
 include ('lib/klientai.php');
 
 $klientaiObj = new klientai();
@@ -30,6 +33,7 @@ if(!empty($_POST['signup'])){
 			$klientaiObj->irasyti($dataPrepared);
 			//atidarome prisijungimo langą
 			include 'templates/prisijungimo_langas.html';
+			exit;
 		} else {
 
 		}

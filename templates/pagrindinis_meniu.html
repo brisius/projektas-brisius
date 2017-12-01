@@ -1,3 +1,9 @@
+<?php 
+	if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    }
+?>
 <!doctype html>
 <html>
 	<head>
@@ -14,16 +20,12 @@
 		<nav>
 			<ul>
 				<?php
-
-				session_start();
-				if (isset($_SESSION['username']) != '')
-				echo $_SESSION['username'];
+					include ('templates/meniu.html');
 				?>
-				<li><a href="index.php">Main</a></li>
-				<li><a href="open.php?module=prisijungimo_langas" >Log In</a></li>
-				<li><a href="#">Computers shop</a></li>
-				<li><a href="#">Computers maintenance</a></li>
-				<li><a href="open.php?module=remonto_ataskaita">Computer parts</a></li>
+				<?php
+					if (isset($_SESSION['username']) != '')
+					echo "Logged in as: ", $_SESSION['username'];
+				?>
 			</ul>
 		</nav>		
 	</header>

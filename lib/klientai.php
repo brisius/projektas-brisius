@@ -1,9 +1,4 @@
 <?php
-session_start();
-		const DB_SERVER 	= 'sql2.freemysqlhosting.net';
-		const DB_NAME 		= 'sql2207758';
-		const DB_USERNAME   = 'sql2207758';
-		const DB_PASSWORD   = 'rH8*uV1!';
 class klientai {
 	private $klientai_lentele = '';
 	private $vartotojai_lentele = '';
@@ -111,10 +106,13 @@ class klientai {
 	}
 	public function prijungti_vartotoja($data){
 		$user=strtolower($data['username']); 
-		$db=mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
-		 $_SESSION['username']=$user;
-		 $_SESSION['message']="ss";
+		$query = "SELECT * FROM {$this->vartotojai_lentele} WHERE username='{$data['username']}'";
 
+		$result = array();
+		$result = mysql::select($query);
+
+		$_SESSION['username'] = $user;
+		$_SESSION['ulevel'] = $result[0]["userlevel"];
 	}
 	
 }

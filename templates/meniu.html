@@ -1,0 +1,31 @@
+<ul>
+
+	<li><a href="index.php">Main meniu</a></li>
+	<?php 
+	if(!isset($_SESSION['logged'])){ ?>
+	<li><a href="index.php?module=kliento_prijungimas" <?php if($module == 'kliento_prijungimas') { echo 'class="active"'; }?>>Login Here</a></li>
+	<li><a href="index.php?module=kliento_registracija" <?php if($module == 'kliento_prijungimas') { echo 'class="active"'; }?>>Register Here</a></li>
+	<?php } ?> 
+	<li><a href="#">Computers shop</a></li>
+	<li><a href="#">Computer parts</a></li>
+	<li><a href="#">Computers maintenance</a></li>
+	<br>
+	<?php
+	if(isset($_SESSION['logged'])){ ?>
+	<li><a href="index.php?module=kliento_atjungimas">Log Out</a></li>
+	<?php } ?> 
+
+	<?php
+	if(isset($_SESSION['ulevel'])){
+		if($_SESSION['ulevel'] == 3) {?>
+	<hr>
+	<label for="admin_panel" class="admin_panel" data-icon="n">Admin panel</label>
+	<hr>
+	<li><a href="#">Clients</a></li>
+	<hr>
+	<?php
+		}
+	}
+	?>
+</ul>
+

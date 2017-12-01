@@ -1,5 +1,8 @@
 <?php
-
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+}
 include ('lib/klientai.php');
 
 
@@ -29,9 +32,9 @@ if(!empty($_POST['login'])){
 		if(empty($errors)){
 			//išsaugome vartotoją
 			$klientaiObj->prijungti_vartotoja($dataPrepared);
+			$_SESSION['logged'] = 1;
 			//atidarome prisijungimo langą
-			include 'templates/pagrindinis_meniu.html';
-			//session_start();
+			include 'templates/pagrindinis_meniu.html';die();
 		} 	else {
 		}
 
