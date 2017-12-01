@@ -6,7 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<!-- CSS -->
-	<link rel="stylesheet" href="css/styles1.css">
+	<link rel="stylesheet" type="text/css" href="css/styles1.css">
+	
 	<!-- <link rel="stylesheet" href="styles.css"> -->
 </head>
 
@@ -41,19 +42,34 @@
 	<br>			
 		<div class="registration-form">
 		<div id="register" class="animate form" align="center">
-			<form  action="../lib/kliento_registracija.php" autocomplete="on" method="POST"> 
+			<form  action="index.php?module=kliento_registracija" autocomplete="on" method="POST"> 
 				<h1> Sign up </h1>
+				<?php
+					if(!empty($errors[0])){
+						echo $errors[0];
+					}
+				?>  <br>
+				<?php
+					if(!empty($errors[1])){
+						echo $errors[1];
+					}
+				?> 
 				<p> 
 					<label for="namesignup" class="name" data-icon="n">Your name</label>
-					<input id="namesignup" name="namesignup" required="required" type="text" placeholder="name"/>
+					<input id="namesignup" name="namesignup" required="required" type="text" placeholder="name" pattern=".{3,}" title="Name must be atleast 3 symbols length!"/>
 				</p>
 				<p> 
 					<label for="surnamesignup" class="surname" data-icon="s">Your surname</label>
-					<input id="surnamesignup" name="surnamesignup" required="required" type="text" placeholder="surname"/>
-				</p>  
+					<input id="surnamesignup" name="surnamesignup" required="required" type="text" placeholder="surname"  pattern=".{3,}" title="Surename must be atleast 3 symbols length!"/>
+				</p>
+				
 				<p> 
 					<label for="usernamesignup" class="uname" data-icon="u">Your username</label>
-					<input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="mysuperusername690"/>
+					<input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="mysuperusername690"  pattern=".{4,}" title="Username must be atleast 4 symbols length!"/>
+				</p>
+				<p>
+					<label for="userbirth" class="ubirth" data-icon="z">Your birth date</label>
+					<input id="userbirth" name="userbirth" required="required" type="date" placeholder="1997-03-31"/>
 				</p>
 				<p> 
 					<label for="emailsignup" class="youmail" data-icon="e" > Your email</label>
@@ -65,27 +81,41 @@
 					<input id="genderFsignup" name="gendersignup" required="required" type="radio" value="female" /> Female
 				</p>
 				<p> 
-					<label for="telephonesignup" class="telephone" data-icon="t" > Your phone</label>
-					<input id="telephonesignup" name="telephonesignup" required="required" type="tel" placeholder="+37060277885"/> 
+					<label for="telephonesignup" class="telephone" data-icon="t" > Your phone +</label>
+					<input id="telephonesignup" name="telephonesignup" required="required" type="tel" pattern = "[0-9]+" placeholder="37060277885"/> 
+				</p>
+				<p> 
+					<label for="citysignup" class="city" data-icon="m" > Your city</label>
+					<select id="city" name="city">
+					<option value="-1">Pasirinkite miestą</option>
+					<?php
+						// išrenkame visus miestus
+						$cities = $klientaiObj->gautiMiestus();
+						foreach($cities as $key => $val) {
+							echo "<option value='{$val['miesto_kodas']}'>{$val['pavadinimas']}</option>";
+						}
+					?>
+				</select>
 				</p>
 				<p> 
 					<label for="addresssignup" class="address" data-icon="a" > Your address</label>
 					<input id="addresssignup" name="addresssignup" required="required" type="text" placeholder="Lithuania Kaunas ..."/> 
 				</p>
+				
 				<p> 
 					<label for="passwordsignup" class="youpasswd" data-icon="p">Your password </label>
-					<input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="eg. X8df!90EO"/>
+					<input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="eg. X8df!90EO" pattern=".{5,}" title="Password must be atleast 5 symbols length!"/>
 				</p>
 				<p> 
 					<label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Please confirm your password </label>
-					<input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="eg. X8df!90EO"/>
+					<input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="eg. X8df!90EO" pattern=".{5,}" title="Passsword must be atleast 5 symbols length!"/>
 				</p>
 				<p class="signin button"> 
 					<input type="submit" value="Sign up" name="signup" /> 
 				</p>
 				<p class="change_link">  
 					Already a member?
-					<a href="index.php?module=kliento_prijungimas" class="to_register"> Go and log in!</a>
+					<a href="" class="to_register"> Go and log in!</a>
 				</p>
 			</form>
 		</div>
