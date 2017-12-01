@@ -5,10 +5,13 @@
 	<title>Login Screen</title>
 
 	<!-- CSS -->
-	<link rel="stylesheet" href="css/styles1.css">
+	<link rel="stylesheet" type="text/css" href="css/styles1.css">
+	
+	<!-- <link rel="stylesheet" href="styles.css"> -->
 </head>
 
 <body>
+
 
 	<header>
 		<img src="images/logo.png" alt="Logo image">
@@ -37,8 +40,18 @@
 		<br>
 		<div class="login-form">
 		<div id="login" class="animate form" align="center">
-			<form  action="mysuperscript.php" autocomplete="on"> 
+			<form  action="index.php?module=kliento_prijungimas" autocomplete="on" method="POST"> 
 				<h1>Log in</h1> 
+				<?php
+					if(!empty($errors[0])){
+						echo $errors[0];
+					}
+				?>  <br>
+				<?php
+					if(!empty($errors[1])){
+						echo $errors[1];
+					}
+				?> 
 				<p> 
 					<label for="username" class="uname" data-icon="u" > Enter your username </label>
 					<input id="username" name="username" required="required" type="text" placeholder="myusername or mymail@mail.com"/>
@@ -52,7 +65,7 @@
 					<label for="loginkeeping">Keep me logged in</label>
 				</p>
 				<p class="login button"> 
-					<input type="submit" value="Login" onClick="clicked()"/> 
+					<input type="submit" value="Login" name="login" /> 
 				</p>
 				<p class="change_link">
 					Not a member yet ?
@@ -71,6 +84,6 @@
 		<h2>Web Page</h2>
 	</footer>
 
-	<script type="text/JavaScript" src="js/jvscript.js"></script>
+
 </body>
 </html>

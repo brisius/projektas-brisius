@@ -26,12 +26,18 @@ class klientai {
 	}
 
 	public function patikrinti_prisijungimo_duomenis($data){
-		$query = "SELECT* FROM {$this->vartotojai_lentele} WHERE username='{$data['usernamesignup']}'";
+		$query = "SELECT* FROM {$this->vartotojai_lentele} WHERE username='{$data['username']}'";
 		$result = mysql::select($query);
 		$error = array();
 		if(empty($result)){
 			$error[0] = "Username do not exist! Please register";
 		}
+		elseif(!empty($result)){
+			if($result[0]['password'] != $hashedPass = substr(hash('sha256', $data['password']), 5, 32)){
+				$error[1] = "Password does not match!";
+			}
+		}
+		return $error;
 	}
 
 	public function irasyti($data){
