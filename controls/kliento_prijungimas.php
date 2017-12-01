@@ -2,6 +2,7 @@
 
 include ('lib/klientai.php');
 
+
 $klientaiObj = new klientai();
 
 //privalomi laukai
@@ -26,10 +27,11 @@ if(!empty($_POST['login'])){
 		//tikriname ar teisingas slaptažodis ir ar nėra jau tokio vartotojo
 		$errors = $klientaiObj->patikrinti_prisijungimo_duomenis($dataPrepared);
 		if(empty($errors)){
-			/*//išsaugome vartotoją
-			$klientaiObj->irasyti($dataPrepared);
+			//išsaugome vartotoją
+			$klientaiObj->prijungti_vartotoja($dataPrepared);
 			//atidarome prisijungimo langą
-			include 'templates/prisijungimo_langas.html';*/
+			include 'templates/pagrindinis_meniu.html';
+			//session_start();
 		} 	else {
 		}
 

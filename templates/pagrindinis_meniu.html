@@ -13,11 +13,17 @@
 		<img src="images/logo.png" alt="Logo image">
 		<nav>
 			<ul>
+				<?php
+
+				session_start();
+				if (isset($_SESSION['username']) != '')
+				echo $_SESSION['username'];
+				?>
 				<li><a href="index.php">Main</a></li>
-				<li><a href="open.php?module=prisijungimo_langas" >Login Here</a></li>
+				<li><a href="open.php?module=prisijungimo_langas" >Log In</a></li>
 				<li><a href="#">Computers shop</a></li>
 				<li><a href="#">Computers maintenance</a></li>
-				<li><a href="#">Computer parts</a></li>
+				<li><a href="open.php?module=remonto_ataskaita">Computer parts</a></li>
 			</ul>
 		</nav>		
 	</header>
