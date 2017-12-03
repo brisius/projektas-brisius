@@ -1,0 +1,88 @@
+@charset "UTF-8";
+/* CSS Document */
+
+nav {
+	float: right;
+	padding-right: 20px;
+}
+
+body {
+	max-width: 1024px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: arial;
+}
+
+nav ul li {
+	list-style-type: none;
+	padding-left: 20px;
+	text-align: right;
+}
+
+nav ul li a {
+	text-decoration: none;
+	color: #2BA273;
+}
+
+.hero-box {
+	height: 338px;
+	background-image: url(images/image2.png);
+	background-size: cover;
+	border: 2px solid;
+	border-color: #00A3FF;
+    border-radius: 25px;
+}
+		
+
+h1 {
+	color: #00A3FF;	
+	font-size: 55px;
+	padding-top: 120px;
+	padding-left: 60px;
+	text-align: center;
+}
+
+h2 {
+	color: #FFFFFF;	
+	font-size: 30px;
+	padding-top: 30px;
+	padding-left: 60px;
+	text-align: center;
+}
+
+footer{
+  padding:20px;
+  margin-top:20px;
+  color:#ffffff;
+  background-color:#00A3FF;;
+  text-align: center;
+}
+
+
+/*TABLET*/
+@media (max-width:768px){
+	h1 {
+		font-size: 40px;
+		text-align: center;
+		padding-left: 0px;
+	}
+	
+	.col {
+		width: 48%;
+	}
+}
+
+
+/*MOBILE*/
+@media (max-width:400px){
+	h1 {
+		font-size: 28px;
+	}
+	.col {
+		width: 98%;
+	}
+	.hidden-xs {
+		display: none;
+	}
+}
+

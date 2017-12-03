@@ -1,0 +1,175 @@
+@charset "UTF-8";
+/* CSS Document */
+
+nav {
+	float: right;
+	padding-right: 20px;
+}
+
+body {
+	max-width: 1024px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: arial;
+}
+
+nav ul li {
+	list-style-type: none;
+	padding-left: 20px;
+	text-align: right;
+}
+
+nav ul li a {
+	text-decoration: none;
+	color: #00A3FF;
+}
+
+nav ul li a:hover { 
+    color: blue;
+}
+
+label {
+	color: #00A3FF;
+	animation-fill-mode: forwards;
+		
+}
+
+.hero-box {
+	height: 160px;
+	background-image: url(../images/image2.png);
+	background-size: cover;
+	border: 2px solid;
+	border-color: #00A3FF;
+    border-radius: 25px;
+}
+
+.registration-form {
+	height: 600px;
+	background-size: cover;
+	border: 2px solid;
+	border-color: #00A3FF;
+    border-radius: 25px;
+}
+
+.login-form {
+	height: 450px;
+	background-size: cover;
+	border: 2px solid;
+	border-color: #00A3FF;
+    border-radius: 25px;
+}
+		
+
+h1 {
+	color: #00A3FF;	
+	font-size: 60px;
+	padding-top: 10px;
+	padding-left: 60px;
+	text-align: center;
+}
+
+h1:hover 
+{
+	color: #0088D5;		
+}
+
+h2 {
+	color: #FFFFFF;	
+	font-size: 20px;
+	padding-top: 10px;
+	padding-left: 60px;
+	text-align: center;
+}
+
+h3 {
+	color: #00A3FF;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.col img {
+	width: 100%;
+	height: auto ;
+	display: block;
+	border: 2px solid;
+	border-color: #00A3FF;
+    border-radius: 25px;	
+	animation: mymove 5s infinite;
+}
+
+.col button {
+    -webkit-transition-duration: 0.9s; /* Safari */
+    transition-duration: 1s;
+	background-color: #00A3FF;
+	width: 100%;
+	color: white;
+}
+
+.col button:hover {
+    background-color: #FFFFFF; /* Green */
+    color: black;
+}
+
+.doc {
+	width: 450px;
+	height: auto;
+	border: 2px solid;
+	border-color: #00A3FF;
+    border-radius: 25px;
+}
+
+#rcorners1 {
+    border-radius: 25px;
+    background: #73AD21;
+    padding: 20px; 
+    width: 200px;
+    height: 150px; 
+}
+
+.col {
+	width: 31.3%;
+	float: left;
+	margin: 1%;
+}
+
+footer{
+  height: 60px;
+  padding:20px;
+  margin-top:20px;
+  color:#ffffff;
+  background-color:#00A3FF;
+  text-align: center;
+}
+
+
+/*TABLET*/
+@media (max-width:768px){
+	h1 {
+		font-size: 40px;
+		text-align: center;
+		padding-left: 0px;
+	}
+	
+	.col {
+		width: 48%;
+	}
+}
+
+
+/*MOBILE*/
+@media (max-width:400px){
+	h1 {
+		font-size: 28px;
+	}
+	.col {
+		width: 98%;
+	}
+	.hidden-xs {
+		display: none;
+	}
+}
+
+
+
+
+
