@@ -1,13 +1,17 @@
 <?php
 
 class remontai {
-	public $dalys_lentele = '';
+	public $remontai_lentele = '';
 	public $paslaugos_lentele = '';
+	public $miestai_lentele = '';
+	public $parduotuves_lentele = '';
 
 
 	public function __construct(){
-		$this->dalys_lentele = 'Dalys';
+		$this->remontai_lentele = 'Remontai';
 		$this->paslaugos_lentele = 'Remonto_paslaugos';
+		$this->miestai_lentele = 'Miestai';
+		$this->parduotuves_lentele = 'Parduotuves';
 	}
 
 	public function perziureti_paslaugas($limit = null, $offset = null){
@@ -29,7 +33,7 @@ class remontai {
 
 	public function irasu_kiekis(){
 		$query = "SELECT COUNT(`id`) as `kiekis`
-					FROM {$this->dalys_lentele}";
+					FROM {$this->remontai_lentele}";
 		$data = mysql::select($query);
 		
 		return $data[0]['kiekis'];
@@ -46,7 +50,7 @@ class remontai {
 	}
 
 
-	public function gautiTipus($limit = null, $offset = null){
+	public function gautiParduotuves($limit = null, $offset = null){
 		$limitOffsetString = "";
 		if(isset($limit)) {
 			$limitOffsetString .= " LIMIT {$limit}";
@@ -57,7 +61,23 @@ class remontai {
 		}
 		
 		$query = "SELECT *
-					FROM {$this->daliu_tipai_lentele}{$limitOffsetString}";
+					FROM {$this->parduotuves_lentele}{$limitOffsetString}";
+		$data = mysql::select($query);
+		
+		return $data;
+	}
+		public function gautiMiestus($limit = null, $offset = null){
+		$limitOffsetString = "";
+		if(isset($limit)) {
+			$limitOffsetString .= " LIMIT {$limit}";
+			
+			if(isset($offset)) {
+				$limitOffsetString .= " OFFSET {$offset}";
+			}	
+		}
+		
+		$query = "SELECT *
+					FROM {$this->miestai_lentele}{$limitOffsetString}";
 		$data = mysql::select($query);
 		
 		return $data;
@@ -80,29 +100,25 @@ class remontai {
 	}
 
 	public function irasyti($data){
-		$query = "INSERT INTO {$this->dalys_lentele}
+		$query = "INSERT INTO {$this->remontai_lentele}
 				(
+					pristatymo_vieta,
 					gamintojas,
-					aprasymas,
-					svoris,
-					pagaminimo_data,
-					kiekis,
-					garantijos_laikotarpis,
-					pristatymo_laikas,
-					kaina,
-					dalies_tipas
+					modelis,
+					kompiuterio_tipas,
+					gedimo_informacija,
+					pristatymo_data_laikas,
+					fk_Parduotuve
 				)
 				VALUES
 				(
+					'{$data['place']}',
 					'{$data['brand']}',
-					'{$data['description']}',
-					'{$data['weigth']}',
+					'{$data['model']}',
+					'{$data['computer_type']}',
+					'{$data['malfunction_info']}',
 					'{$data['date']}',
-					'{$data['amount']}',
-					'{$data['warranty']}',
-					'{$data['delivery']}',
-					'{$data['price']}',
-					'{$data['type']}'
+					'{$data['shop']}'
 				)";
 		mysql::query($query);
 	}

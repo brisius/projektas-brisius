@@ -6,7 +6,7 @@ if(!isset($_SESSION))
 include ('lib/remontai.php');
 $remontaiObj = new remontai();
 
-
+$elementCount = $remontaiObj->irasu_kiekis();
 
 include 'utils/paging.php';
 
