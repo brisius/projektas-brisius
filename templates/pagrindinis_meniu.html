@@ -71,12 +71,6 @@ _________________________________________________________ -->
                             </p>
                         </div>
                         <div class="col-xs-7">
-                            <div class="social">
-                                <a href="#" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
-                                <a href="#" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
-                                <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
-                                <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
-                            </div>
 
                             <div class="login">
                                 <?php 
@@ -137,7 +131,7 @@ _________________________________________________________ -->
                                     <a href="index.php?module=daliu_perziura">Computer parts<b ></b></a>
                                 </li>
                                 <li class="dropdown use-yamm yamm-fw">
-                                    <a href="index.php?module=remonto_paslaugu_perziura">Computers maintenance<b ></b></a>
+                                    <a href="#">Computers maintenance<b ></b></a>
                                 </li>
                                 <?php
                                     if(isset($_SESSION['ulevel'])){
@@ -150,10 +144,12 @@ _________________________________________________________ -->
                                 ?>
                                                                 <!-- ========== FULL WIDTH MEGAMENU ================== -->
                                 <!-- ========== FULL WIDTH MEGAMENU END ================== -->
-
+                                <?php 
+                                if(isset($_SESSION['logged'])){ ?>
                                 <li class="dropdown">
-                                    <a href="#">Contact <b></b></a>
+                                   <a href="index.php?module=pirkti_dalis&action=cart">Shopping Cart<b></b></a>
                                 </li>
+                                <?php } ?>
                             </ul>
 
                         </div>

@@ -1,4 +1,8 @@
 <?php
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+}
 class klientai {
 	private $klientai_lentele = '';
 	private $vartotojai_lentele = '';
@@ -55,6 +59,11 @@ class klientai {
 			'1'
 
 		)";
+		mysql::query($queryUsers);
+
+		$query = "SELECT userid FROM {$this->vartotojai_lentele} WHERE username='{$data['usernamesignup']}'";
+		$result = mysql::select($query);
+		$uId = $result[0]['userid'];
 
 		$queryCustomers = "INSERT INTO {$this->klientai_lentele}
 		(
@@ -66,6 +75,7 @@ class klientai {
 			adresas,
 			sukurimo_data,
 			gimimo_data,
+			fk_Vartotojas,
 			fk_Kliento_grupe,
 			fk_Miestas
 		)
@@ -79,12 +89,12 @@ class klientai {
 			'{$data['addresssignup']}',
 			'NOW()',
 			'{$data['userbirth']}',
+			'{$uId}',
 			'0',
 			'{$data['city']}'
 
 
 		)";
-		mysql::query($queryUsers);
 		mysql::query($queryCustomers);
 	}
 
@@ -112,6 +122,7 @@ class klientai {
 		$result = mysql::select($query);
 
 		$_SESSION['username'] = $user;
+		$_SESSION['userid'] = $result[0]["userid"];
 		$_SESSION['ulevel'] = $result[0]["userlevel"];
 	}
 	

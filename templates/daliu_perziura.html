@@ -66,13 +66,7 @@ _________________________________________________________ -->
                             </p>
                         </div>
                         <div class="col-xs-7">
-                            <div class="social">
-                                <a href="#" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
-                                <a href="#" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
-                                <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
-                                <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
-                            </div>
-
+                            
                             <div class="login">
                                 <?php 
                                 if(!isset($_SESSION['logged'])){ ?>
@@ -145,10 +139,12 @@ _________________________________________________________ -->
                                 ?>
                                                                 <!-- ========== FULL WIDTH MEGAMENU ================== -->
                                 <!-- ========== FULL WIDTH MEGAMENU END ================== -->
-
+                                <?php 
+                                if(isset($_SESSION['logged'])){ ?>
                                 <li class="dropdown">
-                                    <a href="#">Contact <b></b></a>
+                                    <a href="index.php?module=pirkti_dalis&action=cart">Shopping Cart<b></b></a>
                                 </li>
+                                <?php } ?>
                             </ul>
 
                         </div>
@@ -260,50 +256,55 @@ _________________________________________________________ -->
                             <div class="panel-body">
                                 <ul class="nav nav-pills nav-stacked category-menu">
                                     <li>
-                                        <a href="shop-category.html">Men <span class="badge pull-right">42</span></a>
+                                        <a href="shop-category.html">Components<span class="badge pull-right">42</span></a>
                                         <ul>
-                                            <li><a href="shop-category.html">T-shirts</a>
+                                            <li class="active"><a href="index.php?module=daliu_paieska&category=1">Processors</a>
                                             </li>
-                                            <li><a href="shop-category.html">Shirts</a>
+                                            <li><a href="index.php?module=daliu_paieska&category=2">Video Cards</a>
                                             </li>
-                                            <li><a href="shop-category.html">Pants</a>
+                                            <li><a href="index.php?module=daliu_paieska&category=3">RAMs</a>
                                             </li>
-                                            <li><a href="shop-category.html">Accessories</a>
+                                            <li><a href="index.php?module=daliu_paieska&category=4">Hard discs</a>
                                             </li>
-                                        </ul>
-                                    </li>
-                                    <li class="active">
-                                        <a href="shop-category.html">Ladies  <span class="badge pull-right">123</span></a>
-                                        <ul>
-                                            <li><a href="shop-category.html">T-shirts</a>
+                                            <li><a href="index.php?module=daliu_paieska&category=5">Motherboads</a>
                                             </li>
-                                            <li><a href="shop-category.html">Skirts</a>
-                                            </li>
-                                            <li><a href="shop-category.html">Pants</a>
-                                            </li>
-                                            <li><a href="shop-category.html">Accessories</a>
+                                            <li><a href="index.php?module=daliu_paieska&category=6">Power supply</a>
                                             </li>
                                         </ul>
                                     </li>
                                     <li>
-                                        <a href="shop-category.html">Kids  <span class="badge pull-right">11</span></a>
+                                        <a href="shop-category.html">External Devices<span class="badge pull-right">123</span></a>
                                         <ul>
-                                            <li><a href="shop-category.html">T-shirts</a>
+                                           <li><a href="index.php?module=daliu_paieska&category=7">Coolers</a>
                                             </li>
-                                            <li><a href="shop-category.html">Skirts</a>
+                                            <li><a href="index.php?module=daliu_paieska&category=8">Optical devices</a>
                                             </li>
-                                            <li><a href="shop-category.html">Pants</a>
+                                            <li><a href="index.php?module=daliu_paieska&category=9">Cases</a>
                                             </li>
-                                            <li><a href="shop-category.html">Accessories</a>
+                                            <li><a href="index.php?module=daliu_paieska&category=10">PC mouses</a>
+                                            </li>
+                                            <li><a href="index.php?module=daliu_paieska&category=11">Mouse pads</a>
+                                            </li>
+                                            <li><a href="index.php?module=daliu_paieska&category=12">Keyboards</a>
+                                            </li>
+                                            <li><a href="index.php?module=daliu_paieska&category=13">Headphones</a>
+                                            </li>
+                                            <li><a href="index.php?module=daliu_paieska&category=14">Speakers</a>
+                                            </li>
+                                            <li><a href="index.php?module=daliu_paieska&category=15">Cameras</a>
+                                            </li>
+                                            <li><a href="index.php?module=daliu_paieska&category=16">USB devices</a>
                                             </li>
                                         </ul>
                                     </li>
-
                                 </ul>
 
                             </div>
                         </div>
 
+
+                        <!-- *** Procesoriai filtras*** -->
+                        <?php if($category==1){ ?>
                         <div class="panel panel-default sidebar-menu">
 
                             <div class="panel-heading">
@@ -313,74 +314,185 @@ _________________________________________________________ -->
 
                             <div class="panel-body">
 
-                                <form>
+                                <form action="index.php?module=daliu_paieska&category=1&filters=on" method="post" >
                                     <div class="form-group">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox">Armani (10)
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox">Versace (12)
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox">Carlo Bruni (15)
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox">Jack Honey (14)
-                                            </label>
-                                        </div>
+                                        <?php
+                                            foreach($brands as $key => $val){
+                                                echo "<div class='checkbox'>";
+                                                    echo " <label>";
+                                                        echo "<input type='checkbox' name='brand[]' id='brand' value='", $val['gamintojas'], "'>", $val['gamintojas'];
+                                                    echo "</label>";
+                                                echo "</div>";
+                                            }
+
+                                        ?>             
                                     </div>
-
-                                    <button class="btn btn-default btn-sm btn-template-main"><i class="fa fa-pencil"></i> Apply</button>
-
+                                    <p> 
+                                    <input type="submit" class="btn btn-default btn-sm btn-template-main" value="Apply" name="apply" /> 
+                                    </p>
                                 </form>
 
                             </div>
                         </div>
+                        <?php } ?>
 
+                        <!-- *** vaizo plokstes filtras*** -->
+                        <?php if($category==2){ ?>
                         <div class="panel panel-default sidebar-menu">
 
                             <div class="panel-heading">
-                                <h3 class="panel-title clearfix">Colours</h3>
+                                <h3 class="panel-title">Brands</h3>
                                 <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> <span class="hidden-sm">Clear</span></a>
                             </div>
 
                             <div class="panel-body">
 
-                                <form>
+                                <form action="index.php?module=daliu_paieska&category=2&filters=on" method="post" >
                                     <div class="form-group">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox"> <span class="colour white"></span> White (14)
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox"> <span class="colour blue"></span> Blue (10)
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox"> <span class="colour green"></span> Green (20)
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox"> <span class="colour yellow"></span> Yellow (13)
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox"> <span class="colour red"></span> Red (10)
-                                            </label>
-                                        </div>
+                                        <?php
+                                            foreach($brands as $key => $val){
+                                                echo "<div class='checkbox'>";
+                                                    echo " <label>";
+                                                        echo "<input type='checkbox' name='brand[]' id='brand' value='", $val['gamintojas'], "'>", $val['gamintojas'];
+                                                    echo "</label>";
+                                                echo "</div>";
+                                            }
+
+                                        ?>             
                                     </div>
+                                    <p> 
+                                    <input type="submit" class="btn btn-default btn-sm btn-template-main" value="Apply" name="apply" /> 
+                                    </p>
+                                </form>
+
+                            </div>
+                        </div>
+                        <?php } ?>
+                        <!-- *** vaizo plokstes filtras*** -->
+                        <?php if($category==3){ ?>
+                        <div class="panel panel-default sidebar-menu">
+
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Brands</h3>
+                                <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> <span class="hidden-sm">Clear</span></a>
+                            </div>
+
+                            <div class="panel-body">
+
+                                <form action="index.php?module=daliu_paieska&category=3&filters=on" method="post" >
+                                    <div class="form-group">
+                                        <?php
+                                            foreach($brands as $key => $val){
+                                                echo "<div class='checkbox'>";
+                                                    echo " <label>";
+                                                        echo "<input type='checkbox' name='brand[]' id='brand' value='", $val['gamintojas'], "'>", $val['gamintojas'];
+                                                    echo "</label>";
+                                                echo "</div>";
+                                            }
+
+                                        ?>             
+                                    </div>
+                                    <p> 
+                                    <input type="submit" class="btn btn-default btn-sm btn-template-main" value="Apply" name="apply" /> 
+                                    </p>
+                                </form>
+
+                            </div>
+                        </div>
+                        <?php } ?>
+                        
+                        <!-- *** vaizo plokstes filtras*** -->
+                        <?php if($category==4){ ?>
+                        <div class="panel panel-default sidebar-menu">
+
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Brands</h3>
+                                <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> <span class="hidden-sm">Clear</span></a>
+                            </div>
+
+                            <div class="panel-body">
+
+                                <form action="index.php?module=daliu_paieska&category=4&filters=on" method="post" >
+                                    <div class="form-group">
+                                        <?php
+                                            foreach($brands as $key => $val){
+                                                echo "<div class='checkbox'>";
+                                                    echo " <label>";
+                                                        echo "<input type='checkbox' name='brand[]' id='brand' value='", $val['gamintojas'], "'>", $val['gamintojas'];
+                                                    echo "</label>";
+                                                echo "</div>";
+                                            }
+
+                                        ?>             
+                                    </div>
+                                    <p> 
+                                    <input type="submit" class="btn btn-default btn-sm btn-template-main" value="Apply" name="apply" /> 
+                                    </p>
+                                </form>
+
+                            </div>
+                        </div>
+                        <?php } ?>
+                        <!-- *** vaizo plokstes filtras*** -->
+                        <?php if($category==5){ ?>
+                        <div class="panel panel-default sidebar-menu">
+
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Brands</h3>
+                                <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> <span class="hidden-sm">Clear</span></a>
+                            </div>
+
+                            <div class="panel-body">
+
+                                <form action="index.php?module=daliu_paieska&category=5&filters=on" method="post" >
+                                    <div class="form-group">
+                                        <?php
+                                            foreach($brands as $key => $val){
+                                                echo "<div class='checkbox'>";
+                                                    echo " <label>";
+                                                        echo "<input type='checkbox' name='brand[]' id='brand' value='", $val['gamintojas'], "'>", $val['gamintojas'];
+                                                    echo "</label>";
+                                                echo "</div>";
+                                            }
+
+                                        ?>             
+                                    </div>
+                                    <p> 
+                                    <input type="submit" class="btn btn-default btn-sm btn-template-main" value="Apply" name="apply" /> 
+                                    </p>
+                                </form>
+
+                            </div>
+                        </div>
+                        <?php } ?>
+                        <!-- *** vaizo plokstes filtras*** -->
+                        <?php if($category==6){ ?>
+                        <div class="panel panel-default sidebar-menu">
+
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Brands</h3>
+                                <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> <span class="hidden-sm">Clear</span></a>
+                            </div>
+
+                            <div class="panel-body">
+
+                                <form action="index.php?module=daliu_paieska&category=6filters=on" method="post" >
+                                    <div class="form-group">
+                                        <?php
+                                            foreach($brands as $key => $val){
+                                                echo "<div class='checkbox'>";
+                                                    echo " <label>";
+                                                        echo "<input type='checkbox' name='brand[]' id='brand' value='", $val['gamintojas'], "'>", $val['gamintojas'];
+                                                    echo "</label>";
+                                                echo "</div>";
+                                            }
+
+                                        ?>             
+                                    </div>
+                                    <p> 
+                                    <input type="submit" class="btn btn-default btn-sm btn-template-main" value="Apply" name="apply" /> 
+                                    </p>
+                                </form>
 
                                     <button class="btn btn-default btn-sm btn-template-main"><i class="fa fa-pencil"></i> Apply</button>
 
@@ -388,6 +500,326 @@ _________________________________________________________ -->
 
                             </div>
                         </div>
+                        <?php } ?>
+                        <!-- *** vaizo plokstes filtras*** -->
+                        <?php if($category==7){ ?>
+                        <div class="panel panel-default sidebar-menu">
+
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Brands</h3>
+                                <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> <span class="hidden-sm">Clear</span></a>
+                            </div>
+
+                            <div class="panel-body">
+
+                                <form action="index.php?module=daliu_paieska&category=7&filters=on" method="post" >
+                                    <div class="form-group">
+                                        <?php
+                                            foreach($brands as $key => $val){
+                                                echo "<div class='checkbox'>";
+                                                    echo " <label>";
+                                                        echo "<input type='checkbox' name='brand[]' id='brand' value='", $val['gamintojas'], "'>", $val['gamintojas'];
+                                                    echo "</label>";
+                                                echo "</div>";
+                                            }
+
+                                        ?>             
+                                    </div>
+                                    <p> 
+                                    <input type="submit" class="btn btn-default btn-sm btn-template-main" value="Apply" name="apply" /> 
+                                    </p>
+                                </form>
+
+                            </div>
+                        </div>
+                        <?php } ?>
+                        <!-- *** vaizo plokstes filtras*** -->
+                        <?php if($category==8){ ?>
+                        <div class="panel panel-default sidebar-menu">
+
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Brands</h3>
+                                <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> <span class="hidden-sm">Clear</span></a>
+                            </div>
+
+                            <div class="panel-body">
+
+                                <form action="index.php?module=daliu_paieska&category=8&filters=on" method="post" >
+                                    <div class="form-group">
+                                        <?php
+                                            foreach($brands as $key => $val){
+                                                echo "<div class='checkbox'>";
+                                                    echo " <label>";
+                                                        echo "<input type='checkbox' name='brand[]' id='brand' value='", $val['gamintojas'], "'>", $val['gamintojas'];
+                                                    echo "</label>";
+                                                echo "</div>";
+                                            }
+
+                                        ?>             
+                                    </div>
+                                    <p> 
+                                    <input type="submit" class="btn btn-default btn-sm btn-template-main" value="Apply" name="apply" /> 
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                        <?php } ?>
+                        <!-- *** vaizo plokstes filtras*** -->
+                        <?php if($category==9){ ?>
+                        <div class="panel panel-default sidebar-menu">
+
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Brands</h3>
+                                <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> <span class="hidden-sm">Clear</span></a>
+                            </div>
+
+                            <div class="panel-body">
+
+                                <form action="index.php?module=daliu_paieska&category=9&filters=on" method="post" >
+                                    <div class="form-group">
+                                        <?php
+                                            foreach($brands as $key => $val){
+                                                echo "<div class='checkbox'>";
+                                                    echo " <label>";
+                                                        echo "<input type='checkbox' name='brand[]' id='brand' value='", $val['gamintojas'], "'>", $val['gamintojas'];
+                                                    echo "</label>";
+                                                echo "</div>";
+                                            }
+
+                                        ?>             
+                                    </div>
+                                    <p> 
+                                    <input type="submit" class="btn btn-default btn-sm btn-template-main" value="Apply" name="apply" /> 
+                                    </p>
+                                </form>
+
+                            </div>
+                        </div>
+                        <?php } ?>
+                        <!-- *** vaizo plokstes filtras*** -->
+                        <?php if($category==10){ ?>
+                        <div class="panel panel-default sidebar-menu">
+
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Brands</h3>
+                                <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> <span class="hidden-sm">Clear</span></a>
+                            </div>
+
+                            <div class="panel-body">
+
+                                <form action="index.php?module=daliu_paieska&category=10&filters=on" method="post" >
+                                    <div class="form-group">
+                                        <?php
+                                            foreach($brands as $key => $val){
+                                                echo "<div class='checkbox'>";
+                                                    echo " <label>";
+                                                        echo "<input type='checkbox' name='brand[]' id='brand' value='", $val['gamintojas'], "'>", $val['gamintojas'];
+                                                    echo "</label>";
+                                                echo "</div>";
+                                            }
+
+                                        ?>             
+                                    </div>
+                                    <p> 
+                                    <input type="submit" class="btn btn-default btn-sm btn-template-main" value="Apply" name="apply" /> 
+                                    </p>
+                                </form>
+
+                            </div>
+                        </div>
+                        <?php } ?>
+                        <!-- *** vaizo plokstes filtras*** -->
+                        <?php if($category==11){ ?>
+                        <div class="panel panel-default sidebar-menu">
+
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Brands</h3>
+                                <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> <span class="hidden-sm">Clear</span></a>
+                            </div>
+
+                            <div class="panel-body">
+
+                                <form action="index.php?module=daliu_paieska&category=11&filters=on" method="post" >
+                                    <div class="form-group">
+                                        <?php
+                                            foreach($brands as $key => $val){
+                                                echo "<div class='checkbox'>";
+                                                    echo " <label>";
+                                                        echo "<input type='checkbox' name='brand[]' id='brand' value='", $val['gamintojas'], "'>", $val['gamintojas'];
+                                                    echo "</label>";
+                                                echo "</div>";
+                                            }
+
+                                        ?>             
+                                    </div>
+                                    <p> 
+                                    <input type="submit" class="btn btn-default btn-sm btn-template-main" value="Apply" name="apply" /> 
+                                    </p>
+                                </form>
+
+                            </div>
+                        </div>
+                        <?php } ?>
+                        <!-- *** vaizo plokstes filtras*** -->
+                        <?php if($category==12){ ?>
+                        <div class="panel panel-default sidebar-menu">
+
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Brands</h3>
+                                <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> <span class="hidden-sm">Clear</span></a>
+                            </div>
+
+                            <div class="panel-body">
+
+                                <form action="index.php?module=daliu_paieska&category=12&filters=on" method="post" >
+                                    <div class="form-group">
+                                        <?php
+                                            foreach($brands as $key => $val){
+                                                echo "<div class='checkbox'>";
+                                                    echo " <label>";
+                                                        echo "<input type='checkbox' name='brand[]' id='brand' value='", $val['gamintojas'], "'>", $val['gamintojas'];
+                                                    echo "</label>";
+                                                echo "</div>";
+                                            }
+
+                                        ?>             
+                                    </div>
+                                    <p> 
+                                    <input type="submit" class="btn btn-default btn-sm btn-template-main" value="Apply" name="apply" /> 
+                                    </p>
+                                </form>
+
+                            </div>
+                        </div>
+                        <?php } ?>
+                        <!-- *** vaizo plokstes filtras*** -->
+                        <?php if($category==13){ ?>
+                        <div class="panel panel-default sidebar-menu">
+
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Brands</h3>
+                                <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> <span class="hidden-sm">Clear</span></a>
+                            </div>
+
+                            <div class="panel-body">
+
+                                <form action="index.php?module=daliu_paieska&category=13&filters=on" method="post" >
+                                    <div class="form-group">
+                                        <?php
+                                            foreach($brands as $key => $val){
+                                                echo "<div class='checkbox'>";
+                                                    echo " <label>";
+                                                        echo "<input type='checkbox' name='brand[]' id='brand' value='", $val['gamintojas'], "'>", $val['gamintojas'];
+                                                    echo "</label>";
+                                                echo "</div>";
+                                            }
+
+                                        ?>             
+                                    </div>
+                                    <p> 
+                                    <input type="submit" class="btn btn-default btn-sm btn-template-main" value="Apply" name="apply" /> 
+                                    </p>
+                                </form>
+
+                            </div>
+                        </div>
+                        <?php } ?>
+                        <!-- *** vaizo plokstes filtras*** -->
+                        <?php if($category==14){ ?>
+                        <div class="panel panel-default sidebar-menu">
+
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Brands</h3>
+                                <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> <span class="hidden-sm">Clear</span></a>
+                            </div>
+
+                            <div class="panel-body">
+
+                                <form action="index.php?module=daliu_paieska&category=14&filters=on" method="post" >
+                                    <div class="form-group">
+                                        <?php
+                                            foreach($brands as $key => $val){
+                                                echo "<div class='checkbox'>";
+                                                    echo " <label>";
+                                                        echo "<input type='checkbox' name='brand[]' id='brand' value='", $val['gamintojas'], "'>", $val['gamintojas'];
+                                                    echo "</label>";
+                                                echo "</div>";
+                                            }
+
+                                        ?>             
+                                    </div>
+                                    <p> 
+                                    <input type="submit" class="btn btn-default btn-sm btn-template-main" value="Apply" name="apply" /> 
+                                    </p>
+                                </form>
+
+                            </div>
+                        </div>
+                        <?php } ?>
+                        <!-- *** vaizo plokstes filtras*** -->
+                        <?php if($category==15){ ?>
+                        <div class="panel panel-default sidebar-menu">
+
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Brands</h3>
+                                <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> <span class="hidden-sm">Clear</span></a>
+                            </div>
+
+                            <div class="panel-body">
+
+                                <form action="index.php?module=daliu_paieska&category=15&filters=on" method="post" >
+                                    <div class="form-group">
+                                        <?php
+                                            foreach($brands as $key => $val){
+                                                echo "<div class='checkbox'>";
+                                                    echo " <label>";
+                                                        echo "<input type='checkbox' name='brand[]' id='brand' value='", $val['gamintojas'], "'>", $val['gamintojas'];
+                                                    echo "</label>";
+                                                echo "</div>";
+                                            }
+
+                                        ?>             
+                                    </div>
+                                    <p> 
+                                    <input type="submit" class="btn btn-default btn-sm btn-template-main" value="Apply" name="apply" /> 
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                        <?php } ?>
+                        <!-- *** vaizo plokstes filtras*** -->
+                        <?php if($category==16){ ?>
+                        <div class="panel panel-default sidebar-menu">
+
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Brands</h3>
+                                <a class="btn btn-xs btn-danger pull-right" href="#"><i class="fa fa-times-circle"></i> <span class="hidden-sm">Clear</span></a>
+                            </div>
+
+                            <div class="panel-body">
+
+                                <form action="index.php?module=daliu_paieska&category=16&filters=on" method="post" >
+                                    <div class="form-group">
+                                        <?php
+                                            foreach($brands as $key => $val){
+                                                echo "<div class='checkbox'>";
+                                                    echo " <label>";
+                                                        echo "<input type='checkbox' name='brand[]' id='brand' value='", $val['gamintojas'], "'>", $val['gamintojas'];
+                                                    echo "</label>";
+                                                echo "</div>";
+                                            }
+
+                                        ?>             
+                                    </div>
+                                    <p> 
+                                    <input type="submit" class="btn btn-default btn-sm btn-template-main" value="Apply" name="apply" /> 
+                                    </p>
+                                </form>
+
+                            </div>
+                        </div>
+                        <?php } ?>
+
 
                         <!-- *** MENUS AND FILTERS END *** -->
 

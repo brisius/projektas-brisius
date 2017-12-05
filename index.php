@@ -21,6 +21,14 @@
 		if(isset($_GET['action'])) {
 			$action = mysql::escape($_GET['action']);
 		}
+		$category = '';
+		if(isset($_GET['category'])) {
+			$category = mysql::escape($_GET['category']);
+		}
+		$filters = '';
+		if(isset($_GET['filters'])) {
+			$filters = mysql::escape($_GET['filters']);
+		}
 		/*
 		// jeigu pasirinktas elementas (sutartis, automobilis ir kt.), nustatome elemento id
 		$id = '';
