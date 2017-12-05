@@ -128,11 +128,11 @@ _________________________________________________________ -->
                                 <li class="dropdown use-yamm yamm-fw">
                                     <a href="#">Computers shop<b ></b></a>
                                 </li>
-                                <li class="dropdown active">
+                                <li class="dropdown use-yamm yamm-fw">
                                     <a href="index.php?module=daliu_perziura">Computer parts<b ></b></a>
                                 </li>
-                                <li class="dropdown use-yamm yamm-fw">
-                                    <a href="#">Computers maintenance<b ></b></a>
+                                <li class="dropdown active">
+                                    <a href="index.php?module=remonto_paslaugu_perziura">Computers maintenance<b ></b></a>
                                 </li>
                                 <?php
                                     if(isset($_SESSION['ulevel'])){
@@ -268,7 +268,7 @@ _________________________________________________________ -->
 
                             <p class="lead">Fill information</p>
                             <hr>
-                            <form action="index.php?module=administruoti_remontus" method="POST">
+                            <form action="index.php?module=kompiuteriu_remonto_uzsakymas" method="POST">
                                 <div class="form-group">
                                     <label for="name-login">City</label><br>
                                     <select id="name-login" class="form-control" name="place">
@@ -320,6 +320,22 @@ _________________________________________________________ -->
                                     ?>
                                 </select>
                                 </div>
+                                <div class="form-group">
+                                    <label for="name-login">Delivery place(after completing maintenance)</label>
+                                    <select id="name-login" class="form-control" name="delPlace">
+                                         <option value="-1">Select place</option>
+                                         <option value="To the shop">Shop</option>
+                                         <option value="To the home">Home</option>
+                                         </select>
+                                </div>
+                                                                <div class="form-group">
+                                    <label for="name-login">Payment method</label>
+                                    <select id="name-login" class="form-control" name="payment">
+                                         <option value="-1">Select method</option>
+                                         <option value="In the shop">In the Shop</option>
+                                         <option value="Bank transfer">Bank transfer</option>
+                                         </select>
+                                </div>
                                 <div class="text-center">
                                     <p class="signin button"> 
                                         <input type="submit" class="form-control" value="Create" name="createservice" /> 
@@ -345,7 +361,7 @@ _________________________________________________________ -->
 
                             <p class="lead">Edit part information</p>
                             <hr>
-                            <form action="index.php?module=administruoti_remontus" method="POST">
+                            <form action="index.php?module=kompiuteriu_remonto_uzsakymas" method="POST">
                                 <div class="form-group">
                                     <label for="name-login">Type</label><br>
                                     <select id="name-login" class="form-control" name="place">

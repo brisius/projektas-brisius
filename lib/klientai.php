@@ -90,7 +90,7 @@ class klientai {
 			'NOW()',
 			'{$data['userbirth']}',
 			'{$uId}',
-			'0',
+			'6',
 			'{$data['city']}'
 
 
