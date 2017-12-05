@@ -25,7 +25,7 @@ if(!empty($_POST['createservice'])){
 		$dataPrepared = $validator->preparePostFieldsForSQL();
 		//tikriname ar teisingas slaptažodis ir ar nėra jau tokio vartotojo
 		//$errors = $klientaiObj->patikrinti_duomenis($dataPrepared);
-		$remontaiObj->irasyti($dataPrepared);
+		$remontaiObj->uzsakyti_remonta($dataPrepared);
 		header("Location: index.php?module=remonto_paslaugu_perziura");
 		exit;
 

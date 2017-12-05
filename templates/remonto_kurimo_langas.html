@@ -289,15 +289,19 @@ _________________________________________________________ -->
                             
                                 <div class="form-group">
                                     <label for="name-login">Model</label>
-                                    <input type="text" class="form-control" id="name-login" name="model" required="required"  pattern=".{10,}" title="Description must be atleast 10 symbols length!">
+                                    <input type="text" class="form-control" id="name-login" name="model" required="required"  pattern=".{3,}" title="Description must be atleast 10 symbols length!">
                                 </div>
                                 <div class="form-group">
-                                    <label for="name-login">Computer type</label>
-                                    <input type="text" class="form-control" id="name-login" name="computer_type" required="required"   pattern=".{10,}" title="Description must be atleast 10 symbols length!">
+                                    <label for="name-login">Malfunction information</label>
+                                    <input type="text" class="form-control" id="name-login" name="malfunction_info" required="required"   pattern=".{10,}" title="Description must be atleast 10 symbols length!">
                                 </div>
                                                                 <div class="form-group">
-                                    <label for="name-login">Malfunction information</label>
-                                    <input type="text" class="form-control" id="name-login" name="malfunction_info" required="required"  pattern=".{10,}" title="Description must be atleast 10 symbols length!">
+                                    <label for="name-login">Computer type</label>
+                                    <select id="name-login" class="form-control" name="computer_type">
+                                         <option value="-1">Select type</option>
+                                         <option value="Laptop">Laptop</option>
+                                         <option value="PC">PC</option>
+                                         </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="name-login">Time when will deliver item</label>
