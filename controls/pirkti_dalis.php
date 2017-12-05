@@ -34,12 +34,12 @@ else if($action == "doneCheckout"){
 	if(!empty($_POST['delSubmit'])){
 		$_SESSION['payment'] = $_POST['delSubmit'];
 		$dalysObj->irasyti_pirkimus();
-		for ($i=0; $i < $_SESSION['counterF']; $i++) { 
-			$_SESSION['cart'][$i] = null;
-			$_SESSION['quantity'][$i] = 0;
-		}
-		$_SESSION['counterF'] = 0;
-		$_SESSION['counter'] = 0;
+
+		$_SESSION['cart'] = null;
+		$_SESSION['quantity']= null;
+		$_SESSION['counterF'] = null;
+		$_SESSION['counter'] = null;
+		$_SESSION['cartAmount'] = null;
 	}
 	header("Location: index.php");
 }

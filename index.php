@@ -29,6 +29,10 @@
 		if(isset($_GET['filters'])) {
 			$filters = mysql::escape($_GET['filters']);
 		}
+		$contract = '';
+		if(isset($_GET['contract'])) {
+			$contract = mysql::escape($_GET['contract']);
+		}
 		/*
 		// jeigu pasirinktas elementas (sutartis, automobilis ir kt.), nustatome elemento id
 		$id = '';
