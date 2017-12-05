@@ -1,9 +1,3 @@
-<?php 
-    if(!isset($_SESSION)) 
-    { 
-        session_start(); 
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,11 +56,11 @@ _________________________________________________________ -->
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-5 contact">
-                           <p class="hidden-sm hidden-xs">Contact us on +370 622 222 222 or shop@universal.com</p>
+                            <p class="hidden-sm hidden-xs">Contact us on +370 622 222 222 or shop@universal.com</p>
                             <p class="hidden-md hidden-lg"><a href="#" data-animate-hover="pulse"><i class="fa fa-phone"></i></a>  <a href="#" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
                             </p>
                         </div>
-                        <div class="col-xs-7">
+
                             <div class="login">
                                 <?php 
                                 if(!isset($_SESSION['logged'])){ ?>
@@ -122,7 +116,7 @@ _________________________________________________________ -->
                                 <li class="dropdown use-yamm yamm-fw">
                                     <a href="#">Computers shop<b ></b></a>
                                 </li>
-                                <li class="dropdown use-yamm yamm-fw">
+                                <li class="dropdown active">
                                     <a href="index.php?module=daliu_perziura">Computer parts<b ></b></a>
                                 </li>
                                 <li class="dropdown use-yamm yamm-fw">
@@ -141,7 +135,7 @@ _________________________________________________________ -->
                                 <!-- ========== FULL WIDTH MEGAMENU END ================== -->
                                 <?php 
                                 if(isset($_SESSION['logged'])){ ?>
-                                <li class="dropdown active">
+                                <li class="dropdown">
                                    <a href="index.php?module=pirkti_dalis&action=cart">Shopping Cart<b></b></a>
                                 </li>
                                 <?php } ?>
@@ -219,177 +213,121 @@ _________________________________________________________ -->
         <div id="heading-breadcrumbs">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
-                        <h1>Shopping cart</h1>
+                    <div class="col-md-7">
+                        <h1>My orders</h1>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <ul class="breadcrumb">
+
                             <li><a href="index.html">Home</a>
                             </li>
-                            <li>Shopping cart</li>
+                            <li>My orders</li>
                         </ul>
 
                     </div>
                 </div>
             </div>
         </div>
-        <?php if(isset($_SESSION['counter']) && $_SESSION['counterF'] > 0) { ?>
+
         <div id="content">
             <div class="container">
 
+
                 <div class="row">
-                    <div class="col-md-12">
-                        <p class="text-muted lead">You currently have <?php echo $_SESSION['counterF']; ?> item(s) in your cart.</p>
-                    </div>
 
+                    <!-- *** LEFT COLUMN ***
+			 _________________________________________________________ -->
 
-                    <div class="col-md-9 clearfix" id="basket">
+                    <div class="col-md-9" id="customer-orders">
 
+                        <p class="text-muted lead">If you have any questions, please feel free to contact our administrator, our customer service center is working for you 24/7.</p>
+                        <a href="index.php?module=uzsakytu_daliu_perziura&contract=1">Confirmed</a> |
+                        <a href="index.php?module=uzsakytu_daliu_perziura&contract=2">Rejected</a> |
+                        <a href="index.php?module=uzsakytu_daliu_perziura&contract=3">Finished</a> |
                         <div class="box">
-
-                            <form method="post" action="shop-checkout1.html">
-
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="2">Product</th>
-                                                <th>Quantity</th>
-                                                <th>Unit price</th>
-                                                <th>Discount</th>
-                                                <th colspan="2">Total</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php 
-                                            $counter = 1;
-                                            $totalPrice = 0;
-                                            foreach($_SESSION['cart'] as $data){
-                                                if($data != null){
-                                                echo "<tr>";
-                                                    echo "<td>";
-                                                        echo "<a href='#'>";
-                                                            echo "<img src='img/parts_logo.jpg' alt='", $data['aprasymas'],"'>";
-                                                        echo "</a>";
-                                                    echo "</td>";
-                                                    echo "<td>";
-                                                        echo "<a href='#'>", $data['aprasymas'], "</a>";
-                                                    echo "</td>";
-                                                    echo "<td>";
-                                                        echo "<input type='number' value='", $_SESSION['quantity'][$counter], "' class='form-control' readonly>";
-                                                    echo "</td>";
-                                                    echo "<td>";
-                                                        echo "$", $data['kaina'];
-                                                    echo "</td>";
-                                                    echo "<td>";
-                                                        echo "$0.00";
-                                                    echo "</td>";
-                                                    echo "<td>";
-                                                        echo "$", $_SESSION['quantity'][$counter]*$data['kaina'];
-                                                    echo "</td>";
-                                                    echo "<td><a href='index.php?module=pirkti_dalis&action=delete&id=", $counter, "'><i class='fa fa-trash-o'></i></a>";
-                                                echo "</tr>";
-                                                $totalPrice += $_SESSION['quantity'][$counter]*$data['kaina'];
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Order</th>
+                                            <th>Date</th>
+                                            <th>Total</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php 
+                                        foreach($data as $val){
+                                            echo "<tr>";
+                                                echo "<th>" . $val['nr'] . "</th>";
+                                                echo "<td>" . $val['sutarties_data'] . "</td>";
+                                                echo "<td>$" . $val['kaina'] . "</td>";
+                                                if($val['sutarties_busena'] == 1){
+                                                    echo "<td><span class='label label-success'>" . "Confirmed" . "</span></td>";
                                                 }
-                                                $counter++;
-                                            }
-
-                                            ?>
-
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th colspan="5">Total</th>
-                                                <th colspan="2">$<?php echo $totalPrice; ?></th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-
-                                </div>
-                                <!-- /.table-responsive -->
-
-                                <div class="box-footer">
-                                    <div class="pull-left">
-                                        <a href="index.php?module=daliu_perziura" class="btn btn-default"><i class="fa fa-chevron-left"></i> Continue shopping</a>
-                                    </div>
-                                    <div class="pull-right">
-                                        <a href="index.php?module=pirkti_dalis&action=address" class="btn btn-default">  Proceed to checkout<i class="fa fa-chevron-right"></i></a>
-
-                                    </div>
-                                </div>
-
-                            </form>
+                                                else if($val['sutarties_busena'] == 2){
+                                                    echo "<td><span class='label label-danger'>" . "Rejected" . "</span></td>";
+                                                }
+                                                else{
+                                                    echo "<td><span class='label label-info'>" . "Finished" . "</span></td>";
+                                                }
+                                            echo "</tr>";
+                                        }
+                                    ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
 
                         </div>
                         <!-- /.box -->
 
-                    
-
                     </div>
                     <!-- /.col-md-9 -->
 
-                    <div class="col-md-3">
-                        <div class="box" id="order-summary">
-                            <div class="box-header">
-                                <h3>Order summary</h3>
-                            </div>
-                            <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
+                    <!-- *** LEFT COLUMN END *** -->
 
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <tbody>
-                                        <tr>
-                                            <td>Order subtotal</td>
-                                            <th>$<?php echo $totalPrice; ?></th>
-                                        </tr>
-                                        <tr>
-                                            <td>Shipping and handling</td>
-                                            <th>$10.00</th>
-                                        </tr>
-                                        <tr>
-                                            <td>Tax</td>
-                                            <th>$0.00</th>
-                                        </tr>
-                                        <tr class="total">
-                                            <td>Total</td>
-                                            <th>$<?php echo $totalPrice+10; $_SESSION['totalPrice'] = $totalPrice+10; ?></th>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                    <!-- *** RIGHT COLUMN ***
+			 _________________________________________________________ -->
+
+                    <div class="col-md-3">
+                        <!-- *** CUSTOMER MENU ***
+ _________________________________________________________ -->
+                        <div class="panel panel-default sidebar-menu">
+
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Customer section</h3>
+                            </div>
+
+                            <div class="panel-body">
+
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li class="active">
+                                        <a ><i class="fa fa-list"></i> My orders</a>
+                                    </li>
+                                </ul>
                             </div>
 
                         </div>
+                        <!-- /.col-md-3 -->
 
-
-                        
-
+                        <!-- *** CUSTOMER MENU END *** -->
                     </div>
-                    <!-- /.col-md-3 -->
+
+                    <!-- *** RIGHT COLUMN END *** -->
 
                 </div>
+
 
             </div>
             <!-- /.container -->
         </div>
-        <?php } else {?>
-        <div id="content" >
-            <div class="container">
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <p class="text-muted lead">Your shopping cart is empty!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <?php } ?>
         <!-- /#content -->
 
 
         <!-- *** GET IT ***
 _________________________________________________________ -->
 
-        
 
 
         <!-- *** GET IT END *** -->
@@ -563,6 +501,7 @@ _________________________________________________________ -->
 
     </div>
     <!-- /#all -->
+
 
     <!-- #### JAVASCRIPT FILES ### -->
 

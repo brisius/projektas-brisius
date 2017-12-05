@@ -15,6 +15,8 @@ class dalys{
 	private $mokejimu_lentele = '';
 	private $sutarciu_lentele = '';
 
+	private $visos_dalys_lentele = '';
+
 	public function __construct(){
 		$this->dalys_lentele = 'Dalys';
 		$this->daliu_tipai_lentele = 'dalies_tipai';
@@ -23,6 +25,26 @@ class dalys{
 		$this->miestu_lentele = 'Miestai';
 		$this->mokejimu_lentele= 'Mokejimai';
 		$this->sutarciu_lentele = 'Sutartys';
+		$this->visos_dalys_lentele = 'visos_dalys';
+	}
+
+	public function gauti_sutartis($filter){
+		$query = "SELECT id
+					FROM {$this->klientai_lentele} WHERE fk_Vartotojas='{$_SESSION['userid']}'";
+		$data = mysql::select($query);
+		$data2;
+		if($filter == ''){
+			$query = "SELECT *
+					FROM {$this->sutarciu_lentele} WHERE fk_Klientas='{$data[0]['id']}'";
+			$data2 = mysql::select($query);
+		}else{
+			$query = "SELECT *
+					FROM {$this->sutarciu_lentele} WHERE fk_Klientas='{$data[0]['id']}' AND sutarties_busena='{$filter}'";
+			//var_dump($query);die();
+			$data2 = mysql::select($query);
+		}
+		
+		return $data2;
 	}
 
 	public function irasyti_pirkimus(){
@@ -81,6 +103,25 @@ class dalys{
 				)";
 
 		mysql::query($queryContract);
+
+		$query = "SELECT *
+					FROM {$this->sutarciu_lentele} WHERE fk_Klientas='{$data[0]['id']}'";
+		$data2 = mysql::select($query);
+		$count = count($data2);
+		$contractId = $data2[$count-1]['nr'];
+
+		$queryAllParts = "INSERT INTO {$this->visos_dalys_lentele} (fk_Sutartis, fk_Dalis, kiekis) 
+		VALUES ";
+		$counter = 1;
+		foreach ($_SESSION['cart'] as $value) {
+			if($value != null){
+				$queryAllParts = $queryAllParts . "({$contractId}, {$value['id']}, {$_SESSION['quantity'][$counter]}),";
+			}
+			$counter++;
+		}
+		$queryAllParts = substr($queryAllParts, 0, -1);
+		$queryAllParts = $queryAllParts . ";";
+		mysql::query($queryAllParts);
 	}
 
 	public function gauti_kliento_duomenis(){
