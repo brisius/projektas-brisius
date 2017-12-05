@@ -28,19 +28,44 @@ class dalys{
 		$this->visos_dalys_lentele = 'visos_dalys';
 	}
 
+	public function gauti_dalis_pagal_sutarti($id){
+		$query = "SELECT *
+					FROM {$this->visos_dalys_lentele} 
+					LEFT JOIN {$this->dalys_lentele}
+					ON {$this->dalys_lentele}.id = {$this->visos_dalys_lentele}.fk_Dalis
+					WHERE fk_Sutartis='{$id}'";
+		$data = mysql::select($query);
+		return $data;
+	}
+
+	public function gauti_sutartis_ataskaitai($filter){
+		$data2;
+		if($filter == ''){
+			$query = "SELECT *
+					FROM {$this->sutarciu_lentele} WHERE fk_Remontas='1'";
+			$data2 = mysql::select($query);
+		}else{
+			$query = "SELECT *
+					FROM {$this->sutarciu_lentele} WHERE sutarties_busena='{$filter}' AND fk_Remontas='1'";
+			$data2 = mysql::select($query);
+		}
+		
+		return $data2;
+	}
+
 	public function gauti_sutartis($filter){
 		$query = "SELECT id
 					FROM {$this->klientai_lentele} WHERE fk_Vartotojas='{$_SESSION['userid']}'";
 		$data = mysql::select($query);
+
 		$data2;
 		if($filter == ''){
 			$query = "SELECT *
-					FROM {$this->sutarciu_lentele} WHERE fk_Klientas='{$data[0]['id']}'";
+					FROM {$this->sutarciu_lentele} WHERE fk_Klientas='{$data[0]['id']}' AND fk_Remontas='1'";
 			$data2 = mysql::select($query);
 		}else{
 			$query = "SELECT *
-					FROM {$this->sutarciu_lentele} WHERE fk_Klientas='{$data[0]['id']}' AND sutarties_busena='{$filter}'";
-			//var_dump($query);die();
+					FROM {$this->sutarciu_lentele} WHERE fk_Klientas='{$data[0]['id']}' AND sutarties_busena='{$filter}' AND fk_Remontas='1'";
 			$data2 = mysql::select($query);
 		}
 		
@@ -51,11 +76,11 @@ class dalys{
 		$pay = '';
 		$state = '';
 		if($_SESSION['payment'] == "Bank transfer"){
-			$pay = 0;
+			$pay = 1;
 			$state = 2;
 		}
 		if($_SESSION['payment'] == "In the shop"){
-			$pay = 1;
+			$pay = 2;
 			$state = 0;
 		}
 
@@ -97,8 +122,8 @@ class dalys{
 					'{$_SESSION['deliveryOption']}',
 					'1',
 					'{$data[0]['id']}',
-					'0',
 					'1',
+					'4',
 					'1'
 				)";
 
@@ -110,7 +135,7 @@ class dalys{
 		$count = count($data2);
 		$contractId = $data2[$count-1]['nr'];
 
-		$queryAllParts = "INSERT INTO {$this->visos_dalys_lentele} (fk_Sutartis, fk_Dalis, kiekis) 
+		$queryAllParts = "INSERT INTO {$this->visos_dalys_lentele} (fk_Sutartis, fk_Dalis, nupirkta) 
 		VALUES ";
 		$counter = 1;
 		foreach ($_SESSION['cart'] as $value) {

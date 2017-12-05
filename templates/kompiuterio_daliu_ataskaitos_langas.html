@@ -1,8 +1,8 @@
-<?php 
-    if(!isset($_SESSION)) 
-    { 
-        session_start(); 
-    }
+<?php
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,11 +62,11 @@ _________________________________________________________ -->
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-5 contact">
-                            <p class="hidden-sm hidden-xs">Contact us on +370 622 222 222 or shop@universal.com</p>
+                            <p class="hidden-sm hidden-xs">Contact us on +420 777 555 333 or hello@universal.com.</p>
                             <p class="hidden-md hidden-lg"><a href="#" data-animate-hover="pulse"><i class="fa fa-phone"></i></a>  <a href="#" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
                             </p>
                         </div>
-
+                        <div class="col-xs-7">
                             <div class="login">
                                 <?php 
                                 if(!isset($_SESSION['logged'])){ ?>
@@ -112,7 +112,7 @@ _________________________________________________________ -->
                         </div>
                         <!--/.navbar-header -->
 
-                        <div class="navbar-collapse collapse" id="navigation">
+                       <div class="navbar-collapse collapse" id="navigation">
 
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="dropdown use-yamm yamm-fw">
@@ -130,7 +130,7 @@ _________________________________________________________ -->
                                 <?php
                                     if(isset($_SESSION['ulevel'])){
                                         if($_SESSION['ulevel'] == 3) {?>
-                                <li class="dropdown use-yamm yamm-fw">
+                                <li class="dropdown active">
                                     <a href="index.php?module=daliu_ataskaita">Admin panel<b ></b></a>
                                 </li>
                                 <?php
@@ -140,7 +140,7 @@ _________________________________________________________ -->
                                 <!-- ========== FULL WIDTH MEGAMENU END ================== -->
                                 <?php 
                                 if(isset($_SESSION['logged'])){ ?>
-                                <li class="dropdown active">
+                                <li class="dropdown use-yamm yamm-fw">
                                    <a href="index.php?module=pirkti_dalis&action=cart">Shopping Cart<b></b></a>
                                 </li>
                                 <?php } ?>
@@ -219,13 +219,13 @@ _________________________________________________________ -->
             <div class="container">
                 <div class="row">
                     <div class="col-md-7">
-                        <h1>Checkout - Delivery method</h1>
+                        <h1>Admin panel</h1>
                     </div>
                     <div class="col-md-5">
                         <ul class="breadcrumb">
                             <li><a href="index.html">Home</a>
                             </li>
-                            <li>Checkout - Delivery method</li>
+                            <li>Admin panel</li>
                         </ul>
 
                     </div>
@@ -235,105 +235,158 @@ _________________________________________________________ -->
 
         <div id="content">
             <div class="container">
-
                 <div class="row">
+                    <!-- *** LEFT COLUMN ***
+			 _________________________________________________________ -->
 
-                    <div class="col-md-9 clearfix" id="checkout">
+                    <div class="col-md-9 clearfix">
+                        <section>
+                            <div class="panel-group" id="accordion">
+
+                               <p align="center">
+                                    <a href="index.php?module=daliu_ataskaita&action=partorders" type="button" class="btn btn-lg btn-template-main">Parts report</a>
+                                    <br>
+                                </p>
+                                <?php if($action == 'partorders'){ ?>
+                                <a href="index.php?module=daliu_ataskaita&action=partorders&contract=1">Confirmed</a> |
+                                <a href="index.php?module=daliu_ataskaita&action=partorders&contract=2">Rejected</a> |
+                                <a href="index.php?module=daliu_ataskaita&action=partorders&contract=3">Finished</a> |
+                                <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Order</th>
+                                            <th>Date</th>
+                                            <th>Total</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php 
+                                        foreach($data as $val){
+                                            echo "<tr>";
+                                                echo "<th>" . $val['nr'] . "</th>";
+                                                echo "<td>" . $val['sutarties_data'] . "</td>";
+                                                echo "<td>$" . $val['kaina'] . "</td>";
+                                                if($val['sutarties_busena'] == 1){
+                                                    echo "<td><span class='label label-success'>" . "Confirmed" . "</span></td>";
+                                                }
+                                                else if($val['sutarties_busena'] == 2){
+                                                    echo "<td><span class='label label-danger'>" . "Rejected" . "</span></td>";
+                                                }
+                                                else{
+                                                    echo "<td><span class='label label-info'>" . "Finished" . "</span></td>";
+                                                }
+                                                echo "<td><a href='index.php?module=daliu_ataskaita&action=view&id=" , $val['nr'] , "' class='btn btn-template-main btn-sm'>View</a></td>";
+                                            echo "</tr>";
+                                        }
+                                    ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                                <?php } else if($action == 'view'){?>
+                                    <div class="col-md-9 clearfix" id="basket">
 
                         <div class="box">
-                            <form action="index.php?module=pirkti_dalis&action=payment" method="POST">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li class="disabled"><a href="#"><i class="fa fa-map-marker"></i><br>Address</a>
-                                    </li>
-                                    <li class="active"><a href="#"><i class="fa fa-truck"></i><br>Delivery Method</a>
-                                    </li>
-                                    <li class="disabled"><a href="#"><i class="fa fa-money"></i><br>Payment Method</a>
-                                    </li>
-                                </ul>
-                                <div class="content">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="box shipping-method">
 
-                                                <h4>In The shop</h4>
+                            <form method="post" action="shop-checkout1.html">
 
-                                                <p>Come to our shop to take your purchases.</p>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2">Product</th>
+                                                <th>Quantity</th>
+                                                <th>Unit price</th>
+                                                <th>Discount</th>
+                                                <th colspan="2">Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php 
+                                            $totalPrice=0;
+                                               foreach($data as $val){
+                                               
+                                                if($data != null){
+                                                echo "<tr>";
+                                                    echo "<td>";
+                                                        echo "<a href='#'>";
+                                                            echo "<img src='img/parts_logo.jpg' alt='", $val['aprasymas'],"'>";
+                                                        echo "</a>";
+                                                    echo "</td>";
+                                                    echo "<td>";
+                                                        echo "<a href='#'>", $val['aprasymas'], "</a>";
+                                                    echo "</td>";
+                                                    echo "<td>";
+                                                        echo "<input type='number' value='", $val['nupirkta'], "' class='form-control' readonly>";
+                                                    echo "</td>";
+                                                    echo "<td>";
+                                                        echo "$", $val['kaina'];
+                                                    echo "</td>";
+                                                    echo "<td>";
+                                                        echo "$0.00";
+                                                    echo "</td>";
+                                                    echo "<td>";
+                                                        echo "$", $val['kaina']*$val['nupirkta'];
+                                                    echo "</td>";
+                                                echo "</tr>";
+                                                $totalPrice+= $val['kaina']*$val['nupirkta'];
+                                                }
+                                                
+                                            }
 
-                                                <div class="box-footer text-center">
+                                            ?>
 
-                                                    <input type="submit" class="btn btn-template-main" value="In The shop" name="delSubmit" /> 
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="box shipping-method">
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th colspan="5">Total</th>
+                                                <th colspan="2">$<?php echo $totalPrice; ?></th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
 
-                                                <h4>To your house</h4>
-
-                                                <p>We will devliver your purchases to your address.</p>
-
-                                                <div class="box-footer text-center">
-
-                                                    <input type="submit" class="btn btn-template-main" value="To your house" name="delSubmit" /> 
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                       
-                                    </div>
-                                    <!-- /.row -->
-                                    <div class="box-footer">
-                                    <div class="pull-left">
-                                        <a href="index.php?module=pirkti_dalis&action=address" class="btn btn-default"><i class="fa fa-chevron-left"></i>Back to Addresses</a>
-                                    </div>
                                 </div>
-                                </div>
-                                <!-- /.content -->
 
 
-                            </form>
+                                <?php } ?>
+                                <div class="box">
+                            
+                            <!-- /.table-responsive -->
+
                         </div>
-                        <!-- /.box -->
+                            </div>
+                            <!-- /.panel-group -->
 
+                            
+                        </section>
 
                     </div>
                     <!-- /.col-md-9 -->
 
-                    <div class="col-md-3">
+                    <!-- *** LEFT COLUMN END *** -->
 
-                        <div class="box" id="order-summary">
-                            <div class="box-header">
-                                <h3>Order summary</h3>
-                            </div>
-                            <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
+                    <!-- *** RIGHT COLUMN ***
+				_________________________________________________________ -->
 
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <tbody>
-                                        <tr>
-                                            <td>Order subtotal</td>
-                                            <th>$<?php echo $_SESSION['totalPrice']-10; ?></th>
-                                        </tr>
-                                        <tr>
-                                            <td>Shipping and handling</td>
-                                            <th>$10.00</th>
-                                        </tr>
-                                        <tr>
-                                            <td>Tax</td>
-                                            <th>$0.00</th>
-                                        </tr>
-                                        <tr class="total">
-                                            <td>Total</td>
-                                            <th>$<?php echo $_SESSION['totalPrice']; ?></th>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                    <div class="col-sm-3">
+                        <!-- *** PAGES MENU ***
+ _________________________________________________________ -->
+                        
+                        <!-- *** PAGES MENU END *** -->
 
+
+                        <div class="banner">
+                            <a href="shop-category.html">
+                                <img src="img/banner.jpg" alt="sales 2014" class="img-responsive">
+                            </a>
                         </div>
-
+                        <!-- /.banner -->
                     </div>
                     <!-- /.col-md-3 -->
+
+                    <!-- *** RIGHT COLUMN END *** -->
 
                 </div>
                 <!-- /.row -->
@@ -346,6 +399,8 @@ _________________________________________________________ -->
 
         <!-- *** GET IT ***
 _________________________________________________________ -->
+
+       
 
 
         <!-- *** GET IT END *** -->
@@ -520,6 +575,7 @@ _________________________________________________________ -->
     </div>
     <!-- /#all -->
 
+
     <!-- #### JAVASCRIPT FILES ### -->
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -535,6 +591,7 @@ _________________________________________________________ -->
     <script src="js/front.js"></script>
 
     
+
 
 
 </body>
