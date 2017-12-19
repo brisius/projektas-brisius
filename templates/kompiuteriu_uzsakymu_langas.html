@@ -1,9 +1,3 @@
-<?php 
-    if(!isset($_SESSION)) 
-    { 
-        session_start(); 
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,16 +42,12 @@
     <link rel="apple-touch-icon" sizes="120x120" href="img/apple-touch-icon-120x120.png" />
     <link rel="apple-touch-icon" sizes="144x144" href="img/apple-touch-icon-144x144.png" />
     <link rel="apple-touch-icon" sizes="152x152" href="img/apple-touch-icon-152x152.png" />
-    <!-- owl carousel css -->
-
-    <link href="css/owl.carousel.css" rel="stylesheet">
-    <link href="css/owl.theme.css" rel="stylesheet">
 </head>
 
 <body>
 
-    <div id="all">
 
+    <div id="all">
         <header>
 
             <!-- *** TOP ***
@@ -70,7 +60,6 @@ _________________________________________________________ -->
                             <p class="hidden-md hidden-lg"><a href="#" data-animate-hover="pulse"><i class="fa fa-phone"></i></a>  <a href="#" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
                             </p>
                         </div>
-                        <div class="col-xs-7">
 
                             <div class="login">
                                 <?php 
@@ -121,17 +110,17 @@ _________________________________________________________ -->
                         <div class="navbar-collapse collapse" id="navigation">
 
                             <ul class="nav navbar-nav navbar-right">
-                                <li class="dropdown active">
+                                <li class="dropdown use-yamm yamm-fw">
                                     <a href="index.php">Home <b></b></a>
                                 </li>
                                 <li class="dropdown use-yamm yamm-fw">
-                                    <a href="index.php?module=kompiuteriu_pirkimas">Computers shop<b ></b></a>
+                                    <a href="#">Computers shop<b ></b></a>
                                 </li>
-                                <li class="dropdown use-yamm yamm-fw">
+                                <li class="dropdown active">
                                     <a href="index.php?module=daliu_perziura">Computer parts<b ></b></a>
                                 </li>
                                 <li class="dropdown use-yamm yamm-fw">
-                                    <a href="index.php?module=remonto_paslaugu_perziura">Computers maintenance<b ></b></a>
+                                    <a href="#">Computers maintenance<b ></b></a>
                                 </li>
                                 <?php
                                     if(isset($_SESSION['ulevel'])){
@@ -188,163 +177,152 @@ _________________________________________________________ -->
         <!-- *** LOGIN MODAL ***
 _________________________________________________________ -->
 
+        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="Login">Customer login</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="customer-orders.html" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="email_modal" placeholder="email">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="password_modal" placeholder="password">
+                            </div>
+
+                            <p class="text-center">
+                                <button class="btn btn-template-main"><i class="fa fa-sign-in"></i> Log in</button>
+                            </p>
+
+                        </form>
+
+                        <p class="text-center text-muted">Not registered yet?</p>
+                        <p class="text-center text-muted"><a href="customer-register.html"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- *** LOGIN MODAL END *** -->
 
-        <section>
-            <!-- *** HOMEPAGE CAROUSEL ***
- _________________________________________________________ -->
-
-            <div class="home-carousel">
-
-                <div class="dark-mask"></div>
-
-                <div class="container">
-                    <div class="homepage owl-carousel">
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-sm-5 right">
-                                    <p>
-                                        <img src="img/logo2.png" alt="">
-                                    </p>
-                                    <h1>Computers shop</h1>
-                                    <p>You can find the best computers here!
-                                        <br /></p>
-                                </div>
-                                <div class="col-sm-7">
-                                    <img class="img-responsive" src="img/template-homepage.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-
-                                <div class="col-sm-7 text-center">
-                                    <img class="img-responsive" src="img/template-mac.png" alt="">
-                                </div>
-
-                                <div class="col-sm-5">
-                                    <h2>Computer parts</h2>
-                                    <ul class="list-style-none">
-                                        <li>You can find any computer part here!</li>
-                                        <li>Lowest prices!</li>
-                                        <li>Reliable!</li>
-                                    </ul>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-sm-5 right">
-                                    <h1>Computers maintenance</h1>
-                                    <ul class="list-style-none">
-                                        <li>Fix your computer here!</li>
-                                        <li>Lowerst prices!</li>
-                                        <li>Fast and reliable!</li>
-                                    </ul>
-                                </div>
-                                <div class="col-sm-7">
-                                    <img class="img-responsive" src="img/template-easy-customize.png" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.project owl-slider -->
-                </div>
-            </div>
-
-            <!-- *** HOMEPAGE CAROUSEL END *** -->
-        </section>
-
-        <section class="bar background-white">
-            <div class="container">
-                <div class="col-md-12">
-
-
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="box-simple">
-                                <div class="icon">
-                                    <i class="fa fa-desktop"></i>
-                                </div>
-                                <h3>Webdesign</h3>
-                                <p>Fifth abundantly made Give sixth hath. Cattle creature i be don't them behold green moved fowl Moved life us beast good yielding. Have bring.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="box-simple">
-                                <div class="icon">
-                                    <i class="fa fa-print"></i>
-                                </div>
-                                <h3>Print</h3>
-                                <p>Advantage old had otherwise sincerity dependent additions. It in adapted natural hastily is justice. Six draw you him full not mean evil. Prepare garrets it expense windows shewing do an.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="box-simple">
-                                <div class="icon">
-                                    <i class="fa fa-globe"></i>
-                                </div>
-                                <h3>SEO and SEM</h3>
-                                <p>Am terminated it excellence invitation projection as. She graceful shy believed distance use nay. Lively is people so basket ladies window expect.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="box-simple">
-                                <div class="icon">
-                                    <i class="fa fa-lightbulb-o"></i>
-                                </div>
-                                <h3>Consulting</h3>
-                                <p>Fifth abundantly made Give sixth hath. Cattle creature i be don't them behold green moved fowl Moved life us beast good yielding. Have bring.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="box-simple">
-                                <div class="icon">
-                                    <i class="fa fa-envelope-o"></i>
-                                </div>
-                                <h3>Email Marketing</h3>
-                                <p>Advantage old had otherwise sincerity dependent additions. It in adapted natural hastily is justice. Six draw you him full not mean evil. Prepare garrets it expense windows shewing do an.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="box-simple">
-                                <div class="icon">
-                                    <i class="fa fa-user"></i>
-                                </div>
-                                <h3>UX</h3>
-                                <p>Am terminated it excellence invitation projection as. She graceful shy believed distance use nay. Lively is people so basket ladies window expect.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        
-
-        <section class="bar background-image-fixed-2 no-mb color-white text-center">
-            <div class="dark-mask"></div>
+        <div id="heading-breadcrumbs">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="icon icon-lg"><i class="fa fa-file-code-o"></i>
-                        </div>
-                        <h3 class="text-uppercase">Do you want to see more?</h3>
-                        <p class="lead">We have prepared for you more than 40 different HTML pages, including 5 variations of homepage.</p>
-                        <p class="text-center">
-                            <a href="index2.html" class="btn btn-template-transparent-black btn-lg">Check other homepage</a>
-                        </p>
+                    <div class="col-md-7">
+                        <h1>My orders</h1>
                     </div>
+                    <div class="col-md-5">
+                        <ul class="breadcrumb">
 
+                            <li><a href="index.html">Home</a>
+                            </li>
+                            <li>My orders</li>
+                        </ul>
+
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
 
+        <div id="content">
+            <div class="container">
+
+
+                <div class="row">
+
+                    <!-- *** LEFT COLUMN ***
+			 _________________________________________________________ -->
+
+                    <div class="col-md-9" id="customer-orders">
+
+                        <p class="text-muted lead">If you have any questions, please feel free to contact our administrator, our customer service center is working for you 24/7.</p>
+                        <a href="index.php?module=uzsakytu_daliu_perziura&contract=1">Confirmed</a> |
+                        <a href="index.php?module=uzsakytu_daliu_perziura&contract=2">Rejected</a> |
+                        <a href="index.php?module=uzsakytu_daliu_perziura&contract=3">Finished</a> |
+                        <div class="box">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Order</th>
+                                            <th>Date</th>
+                                            <th>Total</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php 
+                                        foreach($data as $val){
+                                            echo "<tr>";
+                                                echo "<th>" . $val['nr'] . "</th>";
+                                                echo "<td>" . $val['sutarties_data'] . "</td>";
+                                                echo "<td>$" . $val['kaina'] . "</td>";
+                                                if($val['sutarties_busena'] == 1){
+                                                    echo "<td><span class='label label-success'>" . "Confirmed" . "</span></td>";
+                                                }
+                                                else if($val['sutarties_busena'] == 2){
+                                                    echo "<td><span class='label label-danger'>" . "Rejected" . "</span></td>";
+                                                }
+                                                else{
+                                                    echo "<td><span class='label label-info'>" . "Finished" . "</span></td>";
+                                                }
+                                            echo "</tr>";
+                                        }
+                                    ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+
+                        </div>
+                        <!-- /.box -->
+
+                    </div>
+                    <!-- /.col-md-9 -->
+
+                    <!-- *** LEFT COLUMN END *** -->
+
+                    <!-- *** RIGHT COLUMN ***
+			 _________________________________________________________ -->
+
+                    <div class="col-md-3">
+                        <!-- *** CUSTOMER MENU ***
+ _________________________________________________________ -->
+                        <div class="panel panel-default sidebar-menu">
+
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Customer section</h3>
+                            </div>
+
+                            <div class="panel-body">
+
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li class="active">
+                                        <a ><i class="fa fa-list"></i> My orders</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <!-- /.col-md-3 -->
+
+                        <!-- *** CUSTOMER MENU END *** -->
+                    </div>
+
+                    <!-- *** RIGHT COLUMN END *** -->
+
+                </div>
+
+
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /#content -->
 
 
         <!-- *** GET IT ***
@@ -524,6 +502,7 @@ _________________________________________________________ -->
     </div>
     <!-- /#all -->
 
+
     <!-- #### JAVASCRIPT FILES ### -->
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -539,9 +518,6 @@ _________________________________________________________ -->
     <script src="js/front.js"></script>
 
     
-
-    <!-- owl carousel -->
-    <script src="js/owl.carousel.min.js"></script>
 
 
 

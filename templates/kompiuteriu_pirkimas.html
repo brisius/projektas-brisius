@@ -119,11 +119,11 @@ _________________________________________________________ -->
                                 <li class="dropdown use-yamm yamm-fw">
                                     <a href="index.php">Home <b></b></a>
                                 </li>
-                                <li class="dropdown use-yamm yamm-fw">
-                                    <a href="index.php?module=kompiuteriu_pirkimas">Computers shop<b ></b></a>
-                                </li>
                                 <li class="dropdown active">
-                                    <a href="index.php?module=daliu_perziura">Computer parts<b ></b></a>
+                                    <a href="#">Computers shop<b ></b></a>
+                                </li>
+                                <li class="dropdown use-yamm yamm-fw">
+                                    <a href="index.php?module=daliu_perziura">Computers parts<b ></b></a>
                                 </li>
                                 <li class="dropdown use-yamm yamm-fw">
                                     <a href="#">Computers maintenance<b ></b></a>
@@ -220,7 +220,7 @@ _________________________________________________________ -->
             <div class="container">
                 <div class="row">
                     <div class="col-md-7">
-                        <h1>Computer Parts</h1>
+                        <h1>Computer shop</h1>
                     </div>
                     <div class="col-md-5">
                         <ul class="breadcrumb">
@@ -256,20 +256,17 @@ _________________________________________________________ -->
                             <div class="panel-body">
                                 <ul class="nav nav-pills nav-stacked category-menu">
                                     <li>
-                                        <a href="#">Components<span class="badge pull-right"></span></a>
+                                        <a href="#">Computers models<span class="badge pull-right"></span></a>
                                         <ul>
-                                            <li class="active"><a href="index.php?module=daliu_paieska&category=1">Processors</a>
+                                            <li class="active"><a href="index.php?module=kompiuteriu_paieska&category=Dell">Dell</a>
                                             </li>
-                                            <li><a href="index.php?module=daliu_paieska&category=2">Video Cards</a>
+                                            <li><a href="index.php?module=kompiuteriu_paieska&category=Asus">Asus</a>
                                             </li>
-                                            <li><a href="index.php?module=daliu_paieska&category=3">RAMs</a>
+                                            <li><a href="index.php?module=kompiuteriu_paieska&category=Acer">Acer</a>
                                             </li>
-                                            <li><a href="index.php?module=daliu_paieska&category=4">Hard discs</a>
+                                            <li><a href="index.php?module=kompiuteriu_paieska&category=Apple">Apple</a>
                                             </li>
-                                            <li><a href="index.php?module=daliu_paieska&category=5">Motherboads</a>
-                                            </li>
-                                            <li><a href="index.php?module=daliu_paieska&category=6">Power supply</a>
-                                            </li>
+
                                         </ul>
                                     </li>
                                     <li>
@@ -825,7 +822,7 @@ _________________________________________________________ -->
 
                         <div class="banner">
                             <a href="shop-category.html">
-                                <img src="img/banner.jpg" alt="sales 2014" class="img-responsive">
+                                <img src="../img/banner.jpg" alt="sales 2014" class="img-responsive">
                             </a>
                         </div>
                         <!-- /.banner -->
@@ -843,13 +840,13 @@ _________________________________________________________ -->
                             if(isset($_SESSION['ulevel'])){
                                 if($_SESSION['ulevel'] == 3) {?>
                         <p align="right">
-                            <a href="index.php?module=administruoti_dalis&action=create" type="button" class="btn btn-lg btn-template-main">Create Part</a>
+                            <a href="index.php?module=kompiuteriu_administravimas&action=create" type="button" class="btn btn-lg btn-template-main">Create  computer</a>
                             <br>
                         </p>
                         <?php }} ?>
                         <?php if(isset($_SESSION['logged'])){ ?>
                         <p align="right">
-                            <a href="index.php?module=uzsakytu_daliu_perziura" type="button" class="btn btn-lg btn-template-main">My parts orders</a>
+                            <a href="index.php?module=uzsakytu_kompiuteriu_perziura" type="button" class="btn btn-lg btn-template-main">My computer orders</a>
                             <br>
                         </p>
                         <?php } ?>
@@ -857,14 +854,30 @@ _________________________________________________________ -->
                             <?php
                                 foreach($data as $key => $val){
                                     echo "<div class='col-md-4 col-sm-6'>";
-                                        echo "<div class='product'>";
+                                        echo "<div class='produc9t'>";
                                             echo "<div class='image'>";
-                                                echo "<a href='index.php?module=dalies_informacija&id=", $val['id'], "'>";
-                                                    echo "<img src='img/parts_logo.jpg' alt='' class='img-responsive image1'>";
+                                                echo "<a href='index.php?module=kompiuteriu_perziura&id=", $val['id'], "'>";
+                                                   
+                                                    if ($val['pavadinimas'] == "Dell")
+                                                    echo "<img src='img/dell_logo.jpg' alt='' class='img-responsive image1'>";
+                                                    else
+                                                    if ($val['pavadinimas'] == "Asus")
+                                                    echo "<img src='img/asus_logo.jpg' alt='' class='img-responsive image1'>";
+                                                    else
+                                                    if ($val['pavadinimas'] == "Acer")
+                                                    echo "<img src='img/acer_logo.jpg' alt='' class='img-responsive image1'>";
+                                                    else
+                                                    if ($val['pavadinimas'] == "Apple")
+                                                    echo "<img src='img/apple_logo.jpg' alt='' class='img-responsive image1'>";
+                                                    else                                       echo "<img src='img/computer_logo.jpg' alt='' class='img-responsive image1'>";               
+                                                    
                                                 echo "</a>";
                                             echo "</div>";
                                             echo "<div class='text'>";
-                                                echo "<h3><a href='#'>", $val['aprasymas'], "</a></h3>";
+                                                echo "<h4><a href='#'>", $val['pavadinimas'], "</a></h4>";
+                                                echo "<h6><a href='#'>", $val['procesorius'], "</a></h6>";
+                                                echo "<h6><a href='#'>", $val['vaizdo_plokste'], "</a></h6>";
+                                                echo "<h6><a href='#'>", $val['operatyvioji_atmintis'], "</a></h6>";
                                                 echo "<p class='price'>", $val['kaina'], "$", "</p>";
                                             echo "</div>";
                                         echo "</div>";
