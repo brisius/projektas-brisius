@@ -2,9 +2,9 @@
 	
 	class settings
 	{
-		const DB_SERVER 	= 'sql2.freemysqlhosting.net';
-		const DB_NAME 		= 'sql2209028';
-		const DB_USERNAME   = 'sql2209028';
-		const DB_PASSWORD   = 'uW4%bS5%';
+		const DB_SERVER 	= 'sql11.freemysqlhosting.net';
+		const DB_NAME 		= 'sql11211558';
+		const DB_USERNAME   = 'sql11211558';
+		const DB_PASSWORD   = 'wTuYnkzzHt';
 	}
 ?>
