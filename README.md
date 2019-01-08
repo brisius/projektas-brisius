@@ -1,1 +1,1 @@
-# projektas-brisius
+# kompiuterių, jų dalių ir remonto paslaugos
